@@ -2,77 +2,181 @@ _printf
 
 _printf is a custom implementation of the C programming function printf. This project is an application of the C programming knowledge that ALX cohort 8 students have learned since starting the program on June, 2022.
 
-Prototype: int _printf(const char *, ...);
-Examples
+Resources
 
-String
+Secrets of printfby Don colton https://www.cypress.com/file/54761/download
+Authorized functions and macros
 
-    Input: _printf("%s\n", 'This is a string.');
-    Output: This is a string.
+write (man 2 write) malloc (man 3 malloc) free (man 3 free) va_start (man 3 va_start) va_end (man 3 va_end) va_copy (man 3 va_copy) va_arg (man 3 va_arg)
+Compilation
 
-Character
+The code must be compiled this way:
 
-    Input: _printf("The first letter in the alphabet is %c\n", 'A');
-    Output: The first letter in the alphabet is A
+*$ gcc -Wall -Werror -Wextra -pedantic .c
 
-Integer
+As a consequence, be careful not to push any c file containing a main function in the root directory of your project (you could have a test folder containing all your tests files including main functions)
 
-    Input: _printf("There are %i dozens in a gross\n", 12);
-    Output: There are 12 dozens in a gross
+The main files will include your main header file (holberton.h): #include holberton.h
+Use & Examples
 
-Decimal:
+Prototype: int _printf(const char *format, ...); Use - General: _printf("format string", var1, var2, ...);
 
-    Input: _printf("%d\n", 1000);
-    Output: 1000
+Examples:
 
-Project Requirements
+    Basic String: _printf("%s Holberton", "Hello");`
+        Output: Hello Holberton
 
-    All files will be compiled on Ubuntu 20.04 LTS
-    Programs and functions will be compiled with gcc 4.8.4 using flags -Wall -Werror -Wextra and -pedantic
-    Code must follow the Betty style
-    Global variables are not allowed
-    Authorized functions and macros:
-        write (man 2 write)
-        malloc (man 3 malloc)
-        free (man 3 free)
-        va_start (man 3 va_start)
-        va_end (man 3 va_end)
-        va_copy (man 3 va_copy)
-        va_arg (man 3 va_arg)
+    Print integers: _printf("This is an array element: arr[%d]:%c", 32, arr[32]);`
+        Output: This is an array element arr[32]:A
 
-Mandatory Tasks
+Many other specifiers and flags were added and by combinig those the _printf() function generate a different ouput. The following list are the specifiers and flags allowed.
+Use & Examples
+Specifiers
+Specifier 	Output 	Examples
+c 	Character 	y
+d or i 	Signed integer 	1024, -1024
+s 	String of characters 	Hello Holberton
+b 	Binary Representation of unsigned integer 	01010110
+u 	Unsigned integer 	1024
+o 	Unsigned octal 	432
+x 	Unsigned hexadecimal integer 	3ca
+X 	Unsigned hexadecimal integer (uppercase) 	3CA
+S 	String with hex-ascii value replacing special chars 	\x0A\x0A
+p 	Pointer address 	0x403212
+r 	Reversed string of characters 	dlroW olleH
+R 	ROT13 Translation of string 	Uryyb
+Flags (In development...)
+Flag 	Description
+- 	Left-justify the output within the field width that was given; Right justification is the default (see width sub-specifier).
++ 	Preceeds the result with a plus or minus sign (+ or -) even for positive numbers. By default, only negative numbers are preceded with a - sign.
+(space) 	If no sign is going to be written, a blank space is inserted before the value.
+# 	Used with o, x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero.
+0 	Left-pads the number with zeroes (0) instead of spaces when padding is specified (see width sub-specifier).
+Width (In development...)
+Width 	Description
+(number) 	Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. The value is not truncated even if the result is larger.
+* 	The width is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted.
+Precision (In development...)
+.Precision 	Description
+.(number) 	For integer specifiers (d, i, o, u, x, X): precision specifies the minimum number of digits to be written. If the value to be written is shorter than this number, the result is padded with leading zeros. The value is not truncated even if the result is longer. A precision of 0 means that no character is written for the value 0. For s: this is the maximum number of characters to be printed. By default all characters are printed until the ending null character is encountered. If the period is specified without an explicit value for precision, 0 is assumed.
+Lenght modifiers (In development...)
+Modifier/Specifier 	d & i 	u, o, x, X 	c 	s 	p
+none 	int 	unsigned int 	int 	char pointer 	void pointer
+h 	short int 	unsigned short int 			
+l 	long int 	unsigned long int 			
+Files contained in this repository
+Name 	Information 	Relevant Files
+man_3_printf 	Man page of the _printf() function. 	None
+holberton.h 	Header file with the data type struct, standard libraries and custom prototypes. 	*.c compilation
+_printf.c 	Main printf function file. Calls other functions. 	printf_(name of var).c file
+print_numbers.c 	Contains decimal and integer functions. 	None
+print_chars.c 	Custom function for char data type. 	None
+printf_sting.c 	Function that calls string type variable. 	None
+printf_oct.c 	Functions that returns octal number. 	None
+printf_hex.c 	Calls hexadecimal numbers (lowercase). 	None
+printf_HEX.c 	Calls hexadecimal numbers (Uppercase). 	None
+printf_unsigned.c 	Returns an unisgined data type. 	None
+print_unsigned_int.c 	contains the functions print_u, print_o, and print_b, which handle the conversion specifiers u, o, and b, respectively, 	None
+printf_srev.c 	Returns a string in reverse. 	None
+print_rot13.c 	Returns a string in Rot13. 	None
+printf_str.c 	Auxiliar functions such as strlen and strcpy. 	None
+_putchar.c 	Custom putchar function. 	None
+Tasks required for this project
 
-    Write function that produces output with conversion specifiers c, s, and %.
-    Handle conversion specifiers d, i.
-    Create a man page for your function.
+    I am not going anywhere. You can print that wherever you want to. I'm here and I am a Spur for life1. I am not going anywhere. You can print that wherever you want to. I'm here and I am a Spur for life.
 
-Advanced Tasks
+Write a function that produces output according to a format. Handle the following conversion specifiers:
 
-    Handle conversion specifier b.
-    Handle conversion specifiers u, o, x, X.
-    Use a local buffer of 1024 chars in order to call write as little as possible.
-    Handle conversion specifier S.
-    Handle conversion specifier p.
-    Handle flag characters +, space, and # for non-custom conversion specifiers.
-    Handle length modifiers l and h for non-custom conversion specifiers.
-    Handle the field width for non-custom conversion specifiers.
-    Handle the precision for non-custom conversion specifiers.
-    Handle the 0 flag character for non-custom conversion specifiers.
-    Handle the custom conversion specifier r that prints the reversed string.
-    Handle the custom conversion specifier R that prints the rot13'ed string.
-    All above options should work well together.
+    c
+    s
+    %
 
-File Descriptions
+    Education is when you read the fine print. Experience is what you get if you dont
 
-    _printf.c: - contains the fucntion _printf, which uses the prototype int _printf(const char *format, ...);. The format string is composed of zero or more directives. See man 3 printf for more detail. _printf will return the number of characters printed (excluding the null byte used to end output to strings) and will write output to stdout, the standard output stream.
-    _putchar.c: - contains the function _putchar, which writes a character to stdout.
-    main.h: - contains all function prototypes used for _printf.
-    man_3_printf: - manual page for the custom _printf function.
-    print_chars.c: - contains the functions print_c, print_s, print_S, and print_r which handle the conversion specifiers c, s, S, and r, respectively, as well as hex_print, which prints a char's ascii value in uppercase hex
-    print_numbers.c: - contains the functions print_i and print_d, which handle the conversion specifiers i and d, respectively
-    print_hex.c: - contains the functions print_hex, which prints an unsigned int in hexidecimal form, print_x, print_X, and print_p, which handle the conversion specifiers x, X, and p, respectively
-    print_unsigned_int.c: - contains the functions print_u, print_o, and print_b, which handle the conversion specifiers u, o, and b, respectively
-    print_rot13.c - contains the function print_R, which handles the conversion specifier R
+Handle the following conversion specifiers:
+
+    d
+    i
+
+    Just because its in print doesn't mean its the gospel
+
+Create a man page for the function
+
+    With a face like mine, I do better in print
+
+Handle the following conversion specifiers:
+
+    b
+
+    What one has not experienced, one will never understand in print
+
+Handle the following conversion specifiers:
+
+    u
+    x
+    o
+    x
+    X
+
+    Nothing in fine print is ever good news
+
+Use a local buffer of 1024 chars in order to call write as little as possible.
+
+    Handle the following custom conversion specifier
+
+    S : prints the string.
+    Non printable characters (0 < ASCII value < 32 or >= 127) are printed this way: \x, followed by the ASCII code value in hexadecimal (upper case - always 2 characters).
+
+    How is the world ruled and led to war? Diplomats lie to journalists and believe these lies when they see them in print
+
+Handle the following conversion specifier: p
+
+    The big print gives and the small print takes away
+
+Handle the following flag characters for non-custom conversion specifiers:
+
+    ´+´
+    space
+    ´#´
+
+    Sarcasm is lost in print
+
+Handle the following length modifiers for non-custom conversion specifiers:
+
+    l
+    h Conversion specifiers to handle: d, i, u, o, x, X
+
+    Print some money and give it to us for the rain forests
+
+Handle the field width for non-custom conversion specifiers.
+
+    The negative is the equivalent of the composer's score, and the print the performance
+
+Handle the precision for non-custom conversion specifiers.
+
+    It's depressing when you're still around and your albums are out of print
+
+Handle the 0 flag character for non-custom conversion specifiers.
+
+    Every time that I wanted to give up, if I saw an interesting textile, print what ever, suddenly I would see a collection
+
+Handle the - flag character for non-custom conversion specifiers.
+
+    Print is the sharpest and the strongest weapon of our party
+
+Handle the following custom conversion specifier:
+
+    r : prints the reversed string
+
+    The flood of print has turned reading into a process of gulping rather than savoring
+
+Handle the following custom conversion specifier:
+
+    R: prints the rot13'ed string
+
+    *
+
+All the above options work well together.
 
 Authors
 
