@@ -1,4 +1,9 @@
-#include "main.h"
+/*
+ * File: base_converters.c
+ * Auth: Brennan D Baraban
+ */
+
+#include "holberton.h"
 
 unsigned int convert_sbase(buffer_t *output, long int num, char *base,
 		unsigned char flags, int wid, int prec);
