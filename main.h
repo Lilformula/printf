@@ -1,5 +1,5 @@
-#ifndef _MAIN_H
-#define _MAIN_H
+#ifndef _HOLBERTON_H
+#define _HOLBERTON_H
 
 #include <limits.h>
 #include <stdarg.h>
@@ -113,4 +113,4 @@ unsigned int convert_sbase(buffer_t *output, long int num, char *base,
 unsigned int convert_ubase(buffer_t *output, unsigned long int num, char *base,
 		unsigned char flags, int wid, int prec);
 
-#endif /* _MAIN_H */
+#endif /* _HOLBERTON_H */
